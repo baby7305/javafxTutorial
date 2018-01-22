@@ -1,13 +1,12 @@
 import javafx.application.Application;
-import javafx.application.Platform;
-import javafx.event.ActionEvent;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Tooltip;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
-public class QuitButtonEx extends Application {
+public class TooltipEx extends Application {
 
     @Override
     public void start(Stage stage) {
@@ -17,19 +16,18 @@ public class QuitButtonEx extends Application {
 
     private void initUI(Stage stage) {
 
-        Button btn = new Button();
-        btn.setText("Quit");
-        btn.setOnAction((ActionEvent event) -> {
-            Platform.exit();
-        });
-
         HBox root = new HBox();
-        root.setPadding(new Insets(25));
+        root.setPadding(new Insets(20));
+
+        Button btn = new Button("Button");
+        Tooltip tooltip = new Tooltip("Button control");
+        Tooltip.install(btn, tooltip);
+
         root.getChildren().add(btn);
 
-        Scene scene = new Scene(root, 280, 200);
+        Scene scene = new Scene(root, 300, 250);
 
-        stage.setTitle("Quit button");
+        stage.setTitle("Tooltip");
         stage.setScene(scene);
         stage.show();
     }
