@@ -1,12 +1,12 @@
 import javafx.application.Application;
+import javafx.event.ActionEvent;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Tooltip;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
-public class TooltipEx extends Application {
+public class MnemonicEx extends Application {
 
     @Override
     public void start(Stage stage) {
@@ -19,15 +19,16 @@ public class TooltipEx extends Application {
         HBox root = new HBox();
         root.setPadding(new Insets(20));
 
-        Button btn = new Button("Button");
-        Tooltip tooltip = new Tooltip("Button control");
-        Tooltip.install(btn, tooltip);
+        Button btn = new Button("_Button");
+        btn.setOnAction((ActionEvent event) -> {
+            System.out.println("Button fired");
+        });
 
         root.getChildren().add(btn);
 
         Scene scene = new Scene(root, 300, 250);
 
-        stage.setTitle("Tooltip");
+        stage.setTitle("Mnemonic");
         stage.setScene(scene);
         stage.show();
     }
