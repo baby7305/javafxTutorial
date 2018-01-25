@@ -19,18 +19,14 @@ public class EventSourceEx extends Application {
         Pane root = new Pane();
 
         Rectangle rect = new Rectangle(30, 30, 80, 80);
-        rect.setOnMouseClicked(new EventHandler<MouseEvent>() {
-
-            @Override
-            public void handle(MouseEvent e) {
-
-                System.out.println(e.getSource());
-                System.out.println(e.getTarget());
-                System.out.println(e.getEventType());
-                System.out.format("x:%f, y:%f%n", e.getSceneX(), e.getSceneY());
-                System.out.format("x:%f, y:%f%n", e.getScreenX(), e.getScreenY());
-            }
-        });
+        rect.setOnMouseClicked((MouseEvent e) -> {
+                    System.out.println(e.getSource());
+                    System.out.println(e.getTarget());
+                    System.out.println(e.getEventType());
+                    System.out.format("x:%f, y:%f%n", e.getSceneX(), e.getSceneY());
+                    System.out.format("x:%f, y:%f%n", e.getScreenX(), e.getScreenY());
+                }
+        );
 
         root.getChildren().addAll(rect);
 
