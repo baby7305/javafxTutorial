@@ -1,7 +1,7 @@
 import javafx.animation.FillTransition;
-import javafx.animation.ParallelTransition;
 import javafx.animation.RotateTransition;
 import javafx.animation.ScaleTransition;
+import javafx.animation.SequentialTransition;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
@@ -10,7 +10,7 @@ import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
-public class ParallelTransitionEx extends Application {
+public class SequentialTransitionEx extends Application {
 
     @Override
     public void start(Stage stage) {
@@ -47,14 +47,14 @@ public class ParallelTransitionEx extends Application {
 
         root.getChildren().add(rect);
 
-        ParallelTransition ptr = new ParallelTransition();
-        ptr.getChildren().addAll(rottr, sctr, fltr);
+        SequentialTransition str = new SequentialTransition();
+        str.getChildren().addAll(rottr, sctr, fltr);
 
-        ptr.play();
+        str.play();
 
         Scene scene = new Scene(root, 300, 250);
 
-        stage.setTitle("ParallelTransition");
+        stage.setTitle("SequentialTransition");
         stage.setScene(scene);
         stage.show();
     }
