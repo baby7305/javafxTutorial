@@ -6,7 +6,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
-public class StarShapeEx extends Application {
+public class TransparentRectanglesEx extends Application {
 
     @Override
     public void start(Stage stage) {
@@ -18,26 +18,29 @@ public class StarShapeEx extends Application {
 
         Pane root = new Pane();
 
-        Canvas canvas = new Canvas(300, 300);
+        Canvas canvas = new Canvas(600, 300);
         GraphicsContext gc = canvas.getGraphicsContext2D();
-        drawStarShape(gc);
+        drawRectangles(gc);
 
         root.getChildren().add(canvas);
 
-        Scene scene = new Scene(root, 300, 250, Color.WHITESMOKE);
+        Scene scene = new Scene(root, 600, 100, Color.WHITESMOKE);
 
-        stage.setTitle("Star");
+        stage.setTitle("Transparent rectangles");
         stage.setScene(scene);
         stage.show();
     }
 
-    private void drawStarShape(GraphicsContext gc) {
+    private void drawRectangles(GraphicsContext gc) {
 
-        double xpoints[] = {10, 85, 110, 135, 210, 160,
-                170, 110, 50, 60};
-        double ypoints[] = {85, 75, 10, 75, 85, 125,
-                190, 150, 190, 125};
-        gc.strokePolygon(xpoints, ypoints, xpoints.length);
+        for (int i = 1; i <= 10; i++) {
+
+            float alpha = i * 0.1f;
+
+            gc.setFill(Color.FORESTGREEN);
+            gc.setGlobalAlpha(alpha);
+            gc.fillRect(50 * i, 20, 40, 40);
+        }
     }
 
     public static void main(String[] args) {
