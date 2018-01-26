@@ -4,9 +4,12 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.CycleMethod;
+import javafx.scene.paint.LinearGradient;
+import javafx.scene.paint.Stop;
 import javafx.stage.Stage;
 
-public class ColoursEx extends Application {
+public class LinearGradientEx extends Application {
 
     @Override
     public void start(Stage stage) {
@@ -20,36 +23,25 @@ public class ColoursEx extends Application {
 
         Canvas canvas = new Canvas(300, 300);
         GraphicsContext gc = canvas.getGraphicsContext2D();
-        drawShapes(gc);
+        doDrawing(gc);
 
         root.getChildren().add(canvas);
 
-        Scene scene = new Scene(root, 280, 200, Color.WHITESMOKE);
+        Scene scene = new Scene(root, 300, 250, Color.WHITESMOKE);
 
-        stage.setTitle("Colours");
+        stage.setTitle("Linear gradient");
         stage.setScene(scene);
         stage.show();
     }
 
-    private void drawShapes(GraphicsContext gc) {
+    private void doDrawing(GraphicsContext gc) {
 
-        gc.setFill(Color.CADETBLUE);
-        gc.fillOval(30, 30, 50, 50);
-
-        gc.setFill(Color.DARKRED);
-        gc.fillOval(110, 30, 50, 50);
-
-        gc.setFill(Color.STEELBLUE);
-        gc.fillOval(190, 30, 50, 50);
-
-        gc.setFill(Color.BURLYWOOD);
-        gc.fillOval(30, 110, 50, 50);
-
-        gc.setFill(Color.LIGHTSEAGREEN);
-        gc.fillOval(110, 110, 50, 50);
-
-        gc.setFill(Color.CHOCOLATE);
-        gc.fillOval(190, 110, 50, 50);
+        Stop[] stops1 = new Stop[] { new Stop(0.2, Color.BLACK),
+                new Stop(0.5, Color.RED), new Stop(0.8, Color.BLACK)};
+        LinearGradient lg1 = new LinearGradient(0, 0, 1, 0, true,
+                CycleMethod.NO_CYCLE, stops1);
+        gc.setFill(lg1);
+        gc.fillRect(50, 30, 200, 180);
     }
 
     public static void main(String[] args) {
